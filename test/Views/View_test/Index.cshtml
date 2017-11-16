@@ -1,0 +1,50 @@
+﻿@model IEnumerable<test.Models.View_test>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@*<div class="col-md-12">*@
+    @{ int id = 0;}
+    @foreach (var group in Model.GroupBy(i => i.Name))
+    {
+        <div class="panel-group col-lg-6" id="accordion_@id" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default ">
+                <div class="panel-heading " role="tab" id="headingOne" style="background-color:rgba(34, 168, 225, 1);">
+                    <h3 class="panel-title " >
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne_@id" aria-expanded="true" aria-controls="collapseOne">
+                            <small><b style="color:black" >@Html.Encode(group.Key)   <span class="badge" style="background-color:black">@group.Count()</span></b></small>
+                        </a>
+                    </h3>
+                </div>
+
+
+                <div id="collapseOne_@id" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="list-group">
+                        <table class="table-condensed">
+
+                            @foreach (var item in group)
+                            {
+                                <tr>
+                                    <th>- <small>@item.Code - @item.Description</small></th>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        id++;
+    }
+@*</div>*@
+    
+
+            
+
+
