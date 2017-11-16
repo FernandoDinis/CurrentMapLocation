@@ -15,10 +15,10 @@ namespace test.Controllers
             return View();
         }
 
-        public ActionResult Employees()
-        {
-            return View();
-        }
+        //public ActionResult Employees()
+        //{
+        //    return View();
+        //}
 
         //public ActionResult About()
         //{
